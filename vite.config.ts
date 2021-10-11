@@ -16,16 +16,16 @@ export default defineConfig(({ mode }) => {
       }
     },
     plugins: [
-      vue(),
-      styleImport({
-        libs: [
-          {
-            libraryName: 'vant',
-            esModule: true,
-            resolveStyle: (name) => `vant/es/${name}/style`
-          }
-        ]
-      })
+      vue()
+      // styleImport({
+      //   libs: [
+      //     {
+      //       libraryName: 'vant',
+      //       esModule: true,
+      //       resolveStyle: (name) => `vant/es/${name}/style`
+      //     }
+      //   ]
+      // })
     ],
     server: {
       port: port,
