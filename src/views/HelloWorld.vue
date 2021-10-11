@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import router from '@/routes'
+import { router } from '@/routes'
 // import { hello } from '@/apis/user'
 import { userStore } from '@/stores/user'
 

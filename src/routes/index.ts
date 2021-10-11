@@ -28,7 +28,7 @@ export const routes = [
   }
 ]
 
-export default createRouter({
+export const router = createRouter({
   history: createWebHistory(),
   routes
 })
