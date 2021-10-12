@@ -7,19 +7,23 @@ export const routes = [
     component: Layout,
     children: [{
       path: '/',
-      name: 'HW',
-      component: () => import('../views/HelloWorld.vue'),
-      meta: { title: 'HW' }
+      component: () => import('../views/QueryPay.vue')
     }]
   },
   {
-    path: '/about',
+    path: '/query_pay',
     component: Layout,
     children: [{
-      path: 'about',
-      name: 'Megadata',
-      component: () => import('@/views/Test.vue'),
-      meta: { title: 'Home' }
+      path: '',
+      component: () => import('@/views/QueryPay.vue')
+    }]
+  },
+  {
+    path: '/query_result',
+    component: Layout,
+    children: [{
+      path: '',
+      component: () => import('@/views/QueryResult.vue')
     }]
   },
   {

@@ -1,12 +1,10 @@
 <template>
   <div class="app-wrapper">
     <van-nav-bar
-        title="标题"
+        title="缴费查询"
         left-text="返回"
-        right-text="按钮"
         left-arrow
         @click-left="onClickLeft"
-        @click-right="onClickRight"
     />
     <router-view v-slot="{ Component }">
       <transition>
@@ -23,9 +21,6 @@ const onClickLeft = () => {
   router.go(-1)
 }
 
-const onClickRight = () => {
-  router.push('/about')
-}
 </script>
 
 <style scoped lang="scss">

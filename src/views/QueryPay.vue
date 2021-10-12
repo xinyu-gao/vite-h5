@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { queryOrder } from '@/apis/query'
+import { router } from '@/routes'
 import { validatorCitizenName, validatorCitizenID } from '@/utils/validate'
 
 const citizenName = ref('')
@@ -44,13 +45,14 @@ const onSubmit = () => {
     citizenID: citizenID.value
   }
   console.log(params)
-  queryOrder(params)
-    .then(data => {
-      console.log(data)
-    })
-    .catch(_ => {
-
-    })
+  router.push('/query_result')
+  // queryOrder(params)
+  //   .then(data => {
+  //     console.log(data)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
 }
 
 </script>
