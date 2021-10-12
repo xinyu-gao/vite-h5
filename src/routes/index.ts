@@ -7,9 +7,9 @@ export const routes = [
     component: Layout,
     children: [{
       path: '/',
-      name: 'Megadata',
-      component: () => import('@/views/HelloWorld.vue'),
-      meta: { title: 'Home' }
+      name: 'HW',
+      component: () => import('../views/HelloWorld.vue'),
+      meta: { title: 'HW' }
     }]
   },
   {

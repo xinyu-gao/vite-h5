@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { router } from '@/routes'
-
-const onClickLeft = () => {
-  router.go(-1)
-}
-
-const onClickRight = () => {
-  router.push('/about')
-}
-</script>
-
 <template>
   <div class="app-wrapper">
     <van-nav-bar
@@ -22,17 +10,27 @@ const onClickRight = () => {
     />
     <router-view v-slot="{ Component }">
       <transition>
-        <component :is="Component" />
+        <component :is="Component"  class="app-body"/>
       </transition>
     </router-view>
   </div>
 </template>
 
+<script setup lang="ts">
+import { router } from '@/routes'
+
+const onClickLeft = () => {
+  router.go(-1)
+}
+
+const onClickRight = () => {
+  router.push('/about')
+}
+</script>
+
 <style scoped lang="scss">
 .app-wrapper {
   position: relative;
   width: 100%;
-  top: 5px
 }
-
 </style>

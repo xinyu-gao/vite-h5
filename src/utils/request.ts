@@ -1,11 +1,5 @@
 import axios from 'axios'
-import { timeoutNotify, serverErrorNotify } from './notify'
-
-interface resData{
-  code: number;
-  message: string;
-  data: object;
-}
+import { timeoutToast, serverErrorToast } from './notify'
 
 const baseURL: string = 'import.meta\u200b.env.VITE_API_BASE'
 
@@ -14,18 +8,18 @@ export const creatRequest = axios.create({
   'timeout': 7000
 })
 
-creatRequest.interceptors.request.use(config => {
+creatRequest.interceptors.request.use((config) => {
   config.headers = {
     'Content-Type': 'application/json'
   }
   config.data = JSON.stringify(config.data)
   return Promise.resolve(config)
 }, error => {
-  timeoutNotify()
+  timeoutToast()
   return Promise.reject(error)
 })
 
-creatRequest.interceptors.response.use(data => {
+creatRequest.interceptors.response.use((data) => {
   // console.log(data)
   const resData: resData = data && data.data || {}
   if (resData && resData.code === 200) {
@@ -37,7 +31,7 @@ creatRequest.interceptors.response.use(data => {
 }, err => {
   console.log(err)
   if (err.response.status === 500) {
-    serverErrorNotify()
+    serverErrorToast()
   }
   return Promise.reject(err)
 })

@@ -1,16 +1,13 @@
-import { Notify } from 'vant'
+import { Toast } from 'vant'
 
-export function timeoutNotify() {
-  Notify({
-    type: 'danger',
-    message: '请求超时'
-
-  })
+export function timeoutToast() {
+  Toast.fail('请求超时')
 }
 
-export function serverErrorNotify() {
-  Notify({
-    type: 'danger',
-    message: '服务器连接失败'
-  })
+export function serverErrorToast() {
+  Toast.fail('服务器连接失败')
+}
+
+export function queryFailToast() {
+  Toast.fail('服务器连接失败')
 }

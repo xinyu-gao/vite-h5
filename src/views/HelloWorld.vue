@@ -1,42 +1,78 @@
 <template>
   <div>
-    <van-nav-bar
-        title="标题"
-        left-text="返回"
-        right-text="按钮"
-        left-arrow
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
-    />
-    <van-button type="primary" @click="toOther">To About</van-button>
+    <p class="prompt">请填写您的身份信息</p>
+    <van-form @submit="onSubmit">
+      <div class="cell-group">
+        <van-cell-group inset>
+          <van-field
+              v-model="citizenName"
+              label="姓名"
+              placeholder="请输入您的姓名"
+              :rules="[{ validator: validatorCitizenName}]"
+          />
+        </van-cell-group>
+      </div>
+      <div class="cell-group">
+        <van-cell-group inset>
+          <van-field
+              v-model="citizenID"
+              label="身份证号"
+              placeholder="请输入您的身份证号码"
+              :rules="[{ validator: validatorCitizenID}]"
+          />
+        </van-cell-group>
+      </div>
+      <div style="margin: 16px;">
+        <van-button round block type="default" native-type="submit">
+          查 询
+        </van-button>
+      </div>
+    </van-form>
   </div>
 </template>
 
 <script setup lang="ts">
-import { router } from '@/routes'
-// import { hello } from '@/apis/user'
-import { userStore } from '@/stores/user'
+import { ref } from 'vue'
+import { queryOrder } from '@/apis/query'
+import { validatorCitizenName, validatorCitizenID } from '@/utils/validate'
 
-const user = userStore()
-console.log(user.getCounter)
-user.plusOne()
-console.log(user.getCounter)
+const citizenName = ref('')
+const citizenID = ref('')
+const onSubmit = () => {
+  const params: queryParams = {
+    citizenName: citizenName.value,
+    citizenID: citizenID.value
+  }
+  console.log(params)
+  queryOrder(params)
+    .then(data => {
+      console.log(data)
+    })
+    .catch(_ => {
 
-function toOther() {
-  // hello()
-  //   .then(data => {
-  //     console.log(data)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  router.push('/about')
+    })
 }
+
 </script>
 
 <style scoped lang="scss">
-$green: #42b983;
-a {
- color: $green;
+
+.prompt {
+  margin: 0;
+  padding: 25px 18px 5px;
+  color: #654646;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
 }
+
+.cell-group {
+  margin-top: 15px;
+}
+
+.query-button-div {
+  margin-top: 30px;
+  text-align: center;
+}
+
 </style>
