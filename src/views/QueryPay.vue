@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="prompt">请填写您的身份信息</p>
-    <van-form @submit="onSubmit">
+    <van-form @submit="onSubmit" validate-trigger="onSubmit">
       <div class="cell-group">
         <van-cell-group inset>
           <van-field
