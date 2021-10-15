@@ -30,9 +30,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { validatorMoneyAmount } from '@/utils/validate'
 
-const amountShould = ref(0)
-const amountPaid = ref(0)
+const amountShould = ref(1300.21)
+const amountPaid = ref(550.12)
 const amountPay = ref(0)
 const paySubmit = () => {
 

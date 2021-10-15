@@ -37,8 +37,8 @@ import { queryOrder } from '@/apis/query'
 import { router } from '@/routes'
 import { validatorCitizenName, validatorCitizenID } from '@/utils/validate'
 
-const citizenName = ref('')
-const citizenID = ref('')
+const citizenName = ref('高新雨')
+const citizenID = ref('220323199906231618')
 const onSubmit = () => {
   const params: queryParams = {
     citizenName: citizenName.value,
